@@ -5,32 +5,35 @@ import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 import Footer from './components/Footer'
 import { MyContext } from "./components/Context/appContext";
 import Favorites from './components/Favorites'
+import BookDetails from './components/BookDetails'
 
 
 function App() {
 
-const [favorite,setFavorite] = useState([])
+const [favorite, setFavorite] = useState([]);
+const[books, setBooks] = useState([]);
+
 
 const addFav =(book)=>{
-   const oldFav= [...favorite]
-   const newfav= oldFav.concat(book)
-   setFavorite(newfav)
+  const duplicate = favorite.filter(each => each.id == book?.id);
+  if(duplicate[0]) return;
+  setFavorite(prev => [...prev, book]);
 }
 
 const removeFav =(id)=>{
-   const oldFav= [...favorite]
-   const newfav= oldFav.filter((fav)=>fav.id !==id)
-   setFavorite(newfav)
+  setFavorite(favorite.filter(each => each.id !== id));
 }
 
   return(
     <div>
-    <MyContext.Provider value={{addFav,favorite,removeFav,setFavorite}}>
+    <MyContext.Provider value={{addFav,favorite,removeFav,setFavorite,books, setBooks}}>
    
     <Navbar />
     <Routes>
     <Route path='/' element={ <BlogList />} />
     <Route path='/favorites' element={<Favorites /> } />
+    <Route path='/details/:id' element={<BookDetails /> } />
+
    
     </Routes>
    
