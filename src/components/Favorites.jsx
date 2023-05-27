@@ -16,7 +16,7 @@ const Favorites = () => {
                <div><img src={book.image_url} /></div>
                
              <div>
-             <button onClick={removeFav(book.id)}>Remove from favorite</button>
+             <button onClick={() => removeFav(book.id)}>Remove from favorite</button>
              </div>
 
                 </div>
