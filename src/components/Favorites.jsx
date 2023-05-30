@@ -1,5 +1,4 @@
 import React,{useContext} from 'react';
-import BookList from './BookList';
 import { MyContext } from './Context/appContext';
 
 
@@ -9,16 +8,22 @@ const Favorites = () => {
 
    
     return ( 
-        <div>
-        {favorite.map((book)=>(
-            <div key={book.id}>
-               <div>{book.title}</div>
-               <div><img src={book.image_url} /></div>
+        <div className='favorite'>
+        {
+           favorite.map((book)=>(
+           
+            <div key={book.id} className='book' >
+               <div>
+                 {book.title}
+               </div>
+               <div>
+                 <img src={book.image_url} />
+               </div>
                
              <div>
              <button onClick={() => removeFav(book.id)}>Remove from favorite</button>
              </div>
-
+             
                 </div>
            ))}
         </div>

@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom'
 
 const BookList = () => {
 
-  const {addFav,favorite,setFavorite, books, setBooks} = useContext(MyContext)
+  const {addFav,favorite, books, setBooks} = useContext(MyContext)
 
   console.log(favorite);
 
@@ -29,7 +29,7 @@ const BookList = () => {
         !books[0] ?
         <p> Sorry, there's an error fetching the books </p> :
         books.map((book)=>(
-          <div key={book.id}>
+          <div key={book.id} className='book'>
             <div> {book.title} </div>
             <div>
               <Link to= {`/details/${book.id}`}> <img src={book.image_url} /> </Link>
@@ -42,7 +42,7 @@ const BookList = () => {
           </div>
         ))
       }         
-    </div>      
+   </div>      
   );
 }
  

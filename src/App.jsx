@@ -16,7 +16,10 @@ const[books, setBooks] = useState([]);
 
 const addFav =(book)=>{
   const duplicate = favorite.filter(each => each.id == book?.id);
-  if(duplicate[0]) return;
+  if(duplicate[0]) {
+    alert('book alreay in favorite')
+    return
+  }
   setFavorite(prev => [...prev, book]);
 }
 
